@@ -4,8 +4,10 @@
 
 ### AI Agents that Discover, Negotiate, and Buy on WhatsApp & Web with Real-Time INR Settlement via Razorpay
 
-[![Live Web Application](https://img.shields.io/badge/Live%20Platform-zapai--com.vercel.app-2563eb?style=for-the-badge&logo=vercel&logoColor=white)](https://zapai-com.vercel.app/)
-[![YouTube Video Walkthrough](https://img.shields.io/badge/Demo%20Video-YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/pyoltM28Mhg)
+[![Frontend on Vercel](https://img.shields.io/badge/Frontend-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://zapai-com.vercel.app/)
+[![Backend on Railway](https://img.shields.io/badge/Backend%20API-Railway-0B0D0E?style=for-the-badge&logo=railway&logoColor=white)](https://razorpay-agent-production.up.railway.app/health)
+[![Neon Postgres DB](https://img.shields.io/badge/Database-Neon%20Postgres-00E599?style=for-the-badge&logo=postgresql&logoColor=black)](https://neon.tech/)
+[![YouTube Video](https://img.shields.io/badge/Demo%20Video-YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/pyoltM28Mhg)
 [![Buildathon Track](https://img.shields.io/badge/Track-AI%20Growth%20%26%20Agentic%20Commerce-7c3aed?style=for-the-badge)](https://razorpay.com)
 [![TypeScript Strict](https://img.shields.io/badge/TypeScript-Strict%205.7-3178c6?style=for-the-badge&logo=typescript&logoColor=white)](tsconfig.json)
 [![License](https://img.shields.io/badge/License-MIT-10b981?style=for-the-badge)](LICENSE)
@@ -24,12 +26,15 @@
 
 ## ⚡ Quick Links & Live Demonstrations
 
-| Resource | Link | Description |
+| Resource | Link | Hosting & Infrastructure Details |
 |---|---|---|
-| 🌐 **Live Web Application** | [zapai-com.vercel.app](https://zapai-com.vercel.app/) | Production Next.js 15 merchant dashboard, catalog manager, live simulator, & AI Growth Advisor. |
+| 🌐 **Frontend Web App** | [zapai-com.vercel.app](https://zapai-com.vercel.app/) | **Hosted on Vercel** — Production Next.js 15 App Router merchant dashboard, onboarding wizard, catalog manager, live simulator, & AI Growth Advisor. |
+| ⚡ **Backend API Gateway** | [razorpay-agent-production.up.railway.app](https://razorpay-agent-production.up.railway.app) ([Health Check](https://razorpay-agent-production.up.railway.app/health)) | **Hosted on Railway** — Bun & Express runtime handling WhatsApp Cloud webhooks, Gemini 2.5 Flash agent reasoning, and Razorpay deep payment integrations. |
+| 🐘 **Database (PostgreSQL)** | [neon.tech](https://neon.tech/) | **Hosted on Neon DB** — Serverless PostgreSQL with connection pooling, row-level concurrency locking, and automated branch replication. |
 | 🎥 **YouTube Video Walkthrough** | [youtu.be/pyoltM28Mhg](https://youtu.be/pyoltM28Mhg) | Full submission walkthrough showing seller onboarding, WhatsApp live negotiation, and Razorpay UPI capture. |
 | 📄 **Product Requirements (PRD)** | [`PRD.md`](PRD.md) | Comprehensive product specifications, user journeys, edge cases, and business goals. |
 | 📐 **System Architecture** | [`ARCHITECTURE.md`](ARCHITECTURE.md) | Low-level distributed system design, protocol specifications, database schemas, and cryptographic proofs. |
+| 🎬 **Pitch Script** | [`output/scripts/Pitch.md`](output/scripts/Pitch.md) | Structured 6-part pitch script explaining the problem, onboarding, dashboard, architecture, and settlement. |
 
 
 ---
@@ -59,8 +64,10 @@ In today's e-commerce landscape, buyers search, compare, hunt for discount codes
 - [Deep Razorpay Financial Suite](#deep-razorpay-financial-suite)
 - [8-Stage Tamper-Evident Audit Ledger](#8-stage-tamper-evident-audit-ledger)
 - [Comprehensive Tech Stack](#comprehensive-tech-stack)
+  - [Cloud Infrastructure & Deployment Topology](#7-cloud-infrastructure--deployment-topology)
 - [Monorepo & Codebase Directory Structure](#monorepo--codebase-directory-structure)
 - [Merchant Dashboard & AI Growth Advisor](#merchant-dashboard--ai-growth-advisor)
+- [🔐 Credential Management: Razorpay & WhatsApp](#-credential-management-razorpay--whatsapp)
 - [Environment Variables](#environment-variables)
 - [Quick Start & Local Development](#quick-start--local-development)
 - [Automated Test Suite (43 Tests Passing)](#automated-test-suite-43-tests-passing)
@@ -308,11 +315,12 @@ ZapAI is built with a state-of-the-art TypeScript monorepo architecture leveragi
 - **Carousels:** [Embla Carousel](https://www.embla-carousel.com/) for touch-friendly product and testimonial carousels.
 - **Forms & Validation:** [React Hook Form](https://react-hook-form.com/) combined with [Zod](https://zod.dev/) client-side validation.
 - **Icons:** [Phosphor Icons React](https://phosphoricons.com/) and [Lucide React](https://lucide.dev/).
-- **Deployment:** [Vercel](https://vercel.com/) edge hosting at [https://zapai-com.vercel.app/](https://zapai-com.vercel.app/).
+- **Deployment & Hosting:** Hosted on [Vercel](https://vercel.com/) at [https://zapai-com.vercel.app/](https://zapai-com.vercel.app/) with Edge optimization and fast preview pipelines.
 
 ### 2. Backend API Gateway & Orchestration (`apps/api`)
 - **Runtime:** [Bun 1.4+](https://bun.sh/) — high-performance JavaScript/TypeScript runtime with native TypeScript execution and native testing.
 - **Server Framework:** [Express 4.21](https://expressjs.com/) with modular routing, CORS, and JSON body parsing.
+- **Deployment & Hosting:** Hosted on [Railway](https://railway.app/) at [https://razorpay-agent-production.up.railway.app](https://razorpay-agent-production.up.railway.app) with persistent uptime and live health checks at [`/health`](https://razorpay-agent-production.up.railway.app/health).
 - **AI / LLM Orchestration:**
   - [Google Gemini 2.5 Flash](https://ai.google.dev/) via `@google/generative-ai` with structured JSON schema outputs and function calling.
   - [Groq SDK](https://groq.com/) (`groq-sdk`) for ultra-low latency fallback LLM inference (<200ms).
@@ -337,7 +345,7 @@ ZapAI is built with a state-of-the-art TypeScript monorepo architecture leveragi
   10. *Webhook Signature Verifier* — Constant-time HMAC-SHA256 signature verification.
 
 ### 4. Database, Caching & Distributed Locks (`packages/database`)
-- **Primary Database:** [Neon Serverless PostgreSQL](https://neon.tech/) with pooled connections via `pg` (8.13) and robust relational schemas.
+- **Primary Database:** Hosted on [Neon Serverless PostgreSQL](https://neon.tech/) with pooled connections via `pg` (8.13), robust relational schemas, and zero-downtime branching.
 - **In-Memory Cache & Distributed Lock:** [Redis 7](https://redis.io/) (`ioredis` 5.4) implementing atomic Redlock patterns (`SET NX EX 120`) to guarantee inventory locks during active negotiations.
 - **Concurrency Control:** Row-level PostgreSQL locks (`SELECT ... FOR UPDATE`) preventing race conditions during ledger block creation.
 
@@ -352,10 +360,20 @@ ZapAI is built with a state-of-the-art TypeScript monorepo architecture leveragi
 - **Ed25519 Digital Signatures:** Asymmetric digital signing of audit checkpoints.
 - **Timing-Safe HMAC:** Constant-time `crypto.timingSafeEqual` verification for Razorpay and Shopify webhook signatures.
 
-### 7. Monorepo & Build Tooling
+### 7. Cloud Infrastructure & Deployment Topology
+
+| Layer | Host / Platform | Production URL | Details |
+|---|---|---|---|
+| **Frontend UI** | **Vercel** | [https://zapai-com.vercel.app/](https://zapai-com.vercel.app/) | Next.js 15 App Router deployed on Vercel Edge with zero-config preview environments and optimized static asset streaming. |
+| **Backend API Gateway** | **Railway** | [https://razorpay-agent-production.up.railway.app](https://razorpay-agent-production.up.railway.app) | Production Bun + Express runtime deployed on Railway with continuous deployment, webhook ingress (`/webhooks/razorpay`, `/webhooks/whatsapp`), and `/health` monitoring. |
+| **Relational Database** | **Neon DB** | [neon.tech](https://neon.tech/) | Serverless PostgreSQL (v16) hosted on Neon with connection pooling (`pg`), row-level concurrency locking (`SELECT ... FOR UPDATE`), and point-in-time recovery. |
+| **In-Memory Cache & Locks**| **Redis (ioredis)** | `redis://...` | Atomic distributed locking (`SET NX EX 120`) to prevent inventory double-selling during active 120s negotiation windows. |
+
+### 8. Monorepo & Build Tooling
 - **Monorepo Manager:** [Turborepo 2.4](https://turbo.build/) for pipeline execution and cached builds.
 - **Package Management:** [Bun Workspaces](https://bun.sh/docs/install/workspaces) linking `@zapai/web`, `@zapai/api`, `@zapai/database`, and `@zapai/types`.
 - **Containers:** Docker multi-stage builds (`Dockerfile`) and `docker-compose.yml`.
+- **Hosting Platforms:** [Vercel](https://vercel.com/) (Frontend) and [Railway](https://railway.app/) (Backend).
 
 ---
 
@@ -447,6 +465,72 @@ The ZapAI Merchant Dashboard ([https://zapai-com.vercel.app/dashboard](https://z
 4. **Live WhatsApp Conversation Inspector:** Real-time visibility into multi-turn buyer-seller WhatsApp chats, showing how the AI interprets intent, applies offers, and issues payment challenges.
 5. **8-Stage Cryptographic Audit Ledger Explorer:** Inspect SHA-256 hash chains, view cryptographic evidence payloads, and download audit bundles for regulatory compliance or Razorpay disputes.
 6. **Merchant Guardrail Settings:** Configure maximum allowable discount percentages, bundle thresholds, and integrate Meta WhatsApp & Razorpay credentials.
+
+---
+
+## 🔐 Credential Management: Razorpay & WhatsApp
+
+ZapAI supports **flexible multi-tenant credential provisioning** across two layers:
+1. **Global Platform Fallback (`.env`)**: Default developer keys used by the backend API gateway for sandbox simulations, automated tests, and platform-wide fallback.
+2. **Self-Serve Merchant Provisioning (Web UI)**: Every individual merchant connects their own independent Razorpay and WhatsApp Business credentials via the **Merchant Onboarding Wizard** (`/onboarding`) or **Settings Panel** (`/dashboard/settings`).
+
+```
+┌───────────────────────────────────────────────────────────────────────────────────────┐
+│                        CREDENTIAL ORCHESTRATION ARCHITECTURE                          │
+│                                                                                       │
+│   MERCHANT ONBOARDING WIZARD & SETTINGS UI (/onboarding, /dashboard/settings)         │
+│   ├── WhatsApp Cloud API: [ Phone Number ID ] + [ Permanent Access Token ]            │
+│   └── Razorpay Suite:     [ Key ID (Test/Live) ] + [ Key Secret ]                     │
+│                                      │                                                │
+│                                      ▼                                                │
+│   NEON POSTGRES (Encrypted Multi-Tenant Store)                                        │
+│   └── Per-store isolated credentials with graceful fallback to server .env            │
+│                                      │                                                │
+│                                      ▼                                                │
+│   GATEWAY EXECUTION ENGINE (Railway Backend)                                          │
+│   ├── Dynamic Webhook Routing: HMAC-SHA256 validated per store credentials           │
+│   └── Multi-Tenant Settlements: Orders & payment links created under merchant account│
+└───────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+### 1. Razorpay Credentials Setup
+
+Razorpay acts as the financial engine for creating orders, dispatching 1-tap UPI payment links, and verifying bank captures:
+
+- **Where to Find Your Credentials:**
+  1. Log into your [Razorpay Dashboard](https://dashboard.razorpay.com/).
+  2. Navigate to **Account & Settings → API Keys**.
+  3. Generate your **Key ID** (`rzp_test_...` or `rzp_live_...`) and **Key Secret**.
+- **Automatic Test vs. Live Detection:**
+  - Keys starting with `rzp_test_` automatically place the store into **Test Sandbox Mode** with blue badges in the dashboard topbar.
+  - Keys starting with `rzp_live_` activate **Live Production Mode** with emerald badges for real-money INR settlement.
+- **Webhook Configuration:**
+  1. In Razorpay Dashboard, navigate to **Settings → Webhooks → Add New Webhook**.
+  2. **Webhook URL:** `https://razorpay-agent-production.up.railway.app/webhooks/razorpay` (or `http://localhost:8000/webhooks/razorpay` locally).
+  3. **Secret:** Choose a secure random string and enter it as `RAZORPAY_WEBHOOK_SECRET`.
+  4. **Active Events to Subscribe:**
+     - `payment.captured` — Triggers instant order commitment and releases the Redis inventory lock.
+     - `payment.failed` — Triggers immediate release of held inventory (<2s) back to the store.
+     - `order.paid` — Commits the final transaction record to the 8-stage cryptographic audit ledger.
+
+---
+
+### 2. Meta WhatsApp Cloud API Credentials Setup
+
+WhatsApp serves as the conversational storefront where the autonomous AI Seller Agent chats with buyers in natural language, negotiates within guardrails, and drops payment links:
+
+- **Where to Find Your Credentials:**
+  1. Log into the [Meta for Developers Portal](https://developers.facebook.com/).
+  2. Go to **My Apps → Your App → WhatsApp → API Setup**.
+  3. Copy your **Phone Number ID** (e.g. `1006...`).
+  4. Generate a **Permanent Access Token** (via System User under Meta Business Manager with `whatsapp_business_messaging` permissions).
+- **Webhook Configuration:**
+  1. In the WhatsApp developer console, navigate to **Configuration → Webhook → Edit**.
+  2. **Callback URL:** `https://razorpay-agent-production.up.railway.app/webhooks/whatsapp` (or `http://localhost:8000/webhooks/whatsapp` locally).
+  3. **Verify Token:** Enter your secret verification token matching `WHATSAPP_WEBHOOK_VERIFY_TOKEN` (e.g. `random_verify_token`).
+  4. **Webhook Fields:** Subscribe to the `messages` event.
+- **Zero-Friction 1-Click UI Setup:**
+  - The ZapAI onboarding wizard (`/onboarding`) and settings page provide 1-click clipboard copy buttons for the pre-configured Railway webhook URLs to paste directly into the Meta & Razorpay developer dashboards.
 
 ---
 
